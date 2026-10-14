@@ -1,0 +1,5 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}PDF Insight Agent{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header><a class="brand" href="{{ url_for('main.dashboard') }}">◈ PDF Insight Agent</a><nav><a href="{{ url_for('main.documents') }}">Documents</a><a href="{{ url_for('main.insights') }}">Insights</a><a href="{{ url_for('main.ask') }}">Ask</a><a href="{{ url_for('main.semantic_search_page') }}">Semantic</a><a href="{{ url_for('main.compare') }}">Compare</a></nav></header>
+<main>{% block content %}{% endblock %}</main><footer>Evidence-first PDF analysis · Optional Ollama: {{ ollama_model }}</footer><script src="{{ url_for('static', filename='app.js') }}"></script></body></html>

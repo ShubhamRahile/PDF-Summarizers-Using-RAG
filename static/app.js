@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const b=document.querySelector("#index-btn");if(b)b.onclick=async()=>{b.disabled=true;b.textContent="Scanning…";const r=await fetch("/api/index",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});const d=await r.json();b.textContent=`Indexed ${d.indexed} new`;setTimeout(()=>location.reload(),700)}})

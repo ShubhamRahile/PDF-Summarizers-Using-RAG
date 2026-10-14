@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}Semantic Search · PDF Insight Agent{% endblock %}{% block content %}
+<p class="eyebrow">VECTOR SEARCH</p><h1>Semantic search</h1>
+<p class="muted">Search by meaning across indexed PDF passages.</p>
+<form id="semantic-form" class="question-form"><label>Query<textarea id="semantic-query" required placeholder="What explains the causes of climate change?"></textarea></label><button class="button">Search</button></form>
+<section id="semantic-results" class="answer panel" hidden><h2>Results</h2><div id="semantic-items"></div></section>
+<script>
+document.querySelector("#semantic-form").onsubmit=async(e)=>{e.preventDefault();const box=document.querySelector("#semantic-results"),items=document.querySelector("#semantic-items");items.textContent="Searching…";box.hidden=false;const r=await fetch("/api/search/semantic?q="+encodeURIComponent(document.querySelector("#semantic-query").value));const d=await r.json();if(!r.ok){items.textContent=d.error||"Semantic search unavailable.";return}items.innerHTML=d.results.map(x=>`<blockquote><small>${x.title} · page ${x.page} · score ${x.score.toFixed(3)}</small>${x.text}</blockquote>`).join("")||"<p>No matching passages.</p>"};
+</script>{% endblock %}

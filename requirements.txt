@@ -1,0 +1,6 @@
+Flask>=3.0,<4
+PyMuPDF>=1.23
+python-dotenv>=1.0
+Optional semantic retrieval:
+sentence-transformers>=3.0
+faiss-cpu>=1.8
